@@ -1,0 +1,18 @@
+# Fix a bug
+
+```
+[Mon Jun 03 13:44:52] lijin@zoo:~/work/mwe/BSeQCmwe/src/BSeQC$ gitdiff.sh
+diff --git a/BSeQC/qc_assess/qc_report.py b/BSeQC/qc_assess/qc_report.py
+index 309903e..662f6ee 100644
+--- a/BSeQC/qc_assess/qc_report.py
++++ b/BSeQC/qc_assess/qc_report.py
+@@ -74,7 +74,8 @@ class QC_Report:
+                 strand_t[s][l] = [0, 0]
+                 Mcall = strand_p[s][l][0,] / strand_p[s][l][1,] * 100 # M/(M+U)*100%
+                 p_len = len(Mcall)
+-                p_standard = Mcall[round(p_len * 0.3):round(p_len * 0.7)]
++                p_standard = Mcall[int(round(p_len * 0.3)):int(round(p_len * 0.7))]
+                 mean = p_standard.mean()
+                 std_v = p_standard.std()
+```
+
